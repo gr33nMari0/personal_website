@@ -1,0 +1,141 @@
+/* Self-hosted fonts — no external font CDN. */
+@import "@fontsource/space-grotesk/400.css";
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/700.css";
+@import "@fontsource/dm-sans/400.css";
+@import "@fontsource/dm-sans/500.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   TOKENS — two complete, deliberately paired colour schemes.
+   :root  = light mode   (cool paper, deep green accent)
+   .dark  = dark mode    (navy-slate, electric green accent)
+   Values are space-separated RGB channels so Tailwind can apply alpha.
+   ========================================================================== */
+:root {
+  --c-bg: 246 248 249;             /* #f6f8f9  cool paper                 */
+  --c-surface: 255 255 255;        /* #ffffff  cards                      */
+  --c-surface-2: 235 240 242;      /* #ebf0f2  alternating section band   */
+  --c-ink: 23 33 47;               /* #17212f  text                       */
+  --c-muted: 74 88 108;            /* #4a586c  secondary text (7.0:1)     */
+  --c-primary: 28 122 75;          /* #1c7a4b  deep green (4.9:1 on #fff) */
+  --c-primary-strong: 17 94 56;    /* #115e38  hover/active               */
+  --c-primary-contrast: 255 255 255;
+  --c-line: 23 33 47;              /* borders take alpha in utilities     */
+  --hex-opacity: 0.05;
+  color-scheme: light;
+}
+
+.dark {
+  --c-bg: 15 22 35;                /* #0f1623  navy-slate                 */
+  --c-surface: 22 31 46;           /* #161f2e  cards                      */
+  --c-surface-2: 27 37 53;         /* #1b2535  alternating section band   */
+  --c-ink: 232 236 241;            /* #e8ecf1  text                       */
+  --c-muted: 147 161 181;          /* #93a1b5  secondary text (7.2:1)     */
+  --c-primary: 127 212 154;        /* #7fd49a  electric green (9.5:1)     */
+  --c-primary-strong: 164 232 187; /* #a4e8bb  hover/active               */
+  --c-primary-contrast: 11 18 28;  /* near-black text on green fills      */
+  --c-line: 232 236 241;
+  --hex-opacity: 0.07;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* anchors land below the fixed navbar */
+  }
+  body {
+    @apply bg-bg text-ink font-body antialiased;
+  }
+  ::selection {
+    background: rgb(var(--c-primary) / 0.3);
+  }
+  /* Visible focus for every interactive element (WCAG 2.4.7). */
+  :focus-visible {
+    outline: 2px solid rgb(var(--c-primary));
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  /* Skip link — first tabbable element, visible on focus. */
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100]
+      focus:px-4 focus:py-2 focus:rounded focus:bg-primary focus:text-primary-contrast
+      focus:text-sm focus:font-medium;
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-primary;
+  }
+
+  /* Left-border section heading — signature carried over from the old site. */
+  .section-heading {
+    @apply font-display text-3xl font-bold border-l-4 border-primary pl-4;
+  }
+
+  .card {
+    @apply rounded-xl border border-line/10 bg-surface;
+  }
+  .card-hover {
+    @apply transition-shadow duration-300 hover:shadow-[0_0_0_1px_rgb(var(--c-primary)/0.35),0_18px_40px_-18px_rgb(var(--c-primary)/0.35)];
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-full border border-primary/25 bg-primary/10
+      px-2.5 py-1 font-mono text-xs text-primary;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm
+      font-medium font-display transition-colors;
+  }
+  .btn-primary {
+    @apply btn bg-primary text-primary-contrast hover:bg-primary-strong;
+  }
+  .btn-outline {
+    @apply btn border border-primary/40 text-primary hover:bg-primary/10;
+  }
+
+  .link-underline {
+    @apply underline decoration-primary/40 underline-offset-4 hover:decoration-primary;
+  }
+
+  .field {
+    @apply w-full rounded-lg border border-line/20 bg-surface px-3 py-2 text-sm text-ink
+      placeholder:text-muted/60 focus:border-primary/50;
+  }
+}
+
+/* Motion is a garnish, not a load-bearing wall. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-fade-up,
+  .animate-hex-drift,
+  .reveal {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Scroll-reveal (driven by a tiny IntersectionObserver in Reveal.jsx). */
+.reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

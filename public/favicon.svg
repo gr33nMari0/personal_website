@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Hex shield monogram — replace this file to change every icon; PNGs regenerate at build. -->
+  <polygon points="32,3 58,17 58,47 32,61 6,47 6,17" fill="#0f1623"/>
+  <polygon points="32,3 58,17 58,47 32,61 6,47 6,17" fill="none" stroke="#7fd49a" stroke-width="3"/>
+  <text x="32" y="42" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#7fd49a">PW</text>
+</svg>

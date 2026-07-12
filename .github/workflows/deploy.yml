@@ -1,0 +1,93 @@
+# Build and deploy to GitHub Pages on every push to main.
+#
+# One-time setup (required before the first run can deploy):
+#   Repo → Settings → Pages → "Build and deployment" → Source: GitHub Actions
+# The workflow also calls enablement below, so on most repos even that is
+# handled automatically on the first run.
+#
+# HOSTING CONFIGURATION — the only two values that change per host:
+#   NEXT_PUBLIC_BASE_PATH   ""  for the custom domain peterwoodhead.com (current setup).
+#                           Set to "/<repo-name>" if you ever remove the custom
+#                           domain and serve from <user>.github.io/<repo-name>.
+#   NEXT_PUBLIC_SITE_ORIGIN The https origin the site is reached at. Feeds every
+#                           canonical / Open Graph / sitemap URL, so social link
+#                           previews break if it's wrong.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Least privilege: read the repo, write the Pages artifact, mint the OIDC token.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Serialize deploys so two pushes can't race; newer runs supersede queued ones.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  NEXT_PUBLIC_BASE_PATH: ""
+  NEXT_PUBLIC_SITE_ORIGIN: "https://peterwoodhead.com"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up Node 22 (LTS)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install from lockfile
+        run: npm ci
+
+      # prebuild (validate-content + generate) runs automatically before build
+      - name: Validate content, generate assets, build
+        run: npm run build
+
+      - name: Quality checks on built output
+        run: |
+          set -e
+          check() { test -f "out/$1" || { echo "::error::out/$1 is missing"; exit 1; }; }
+          check index.html
+          check 404.html
+          check CNAME
+          check robots.txt
+          check sitemap.xml
+          check og.png
+          check site.webmanifest
+          grep -q "peterwoodhead.com" out/CNAME || { echo "::error::CNAME does not contain the custom domain"; exit 1; }
+          grep -q "${NEXT_PUBLIC_SITE_ORIGIN}" out/sitemap.xml || { echo "::error::sitemap.xml does not use ${NEXT_PUBLIC_SITE_ORIGIN}"; exit 1; }
+          grep -q "${NEXT_PUBLIC_SITE_ORIGIN}${NEXT_PUBLIC_BASE_PATH}/og.png" out/index.html || { echo "::error::Open Graph image URL is not absolute at the deployed origin"; exit 1; }
+          grep -q 'rel="canonical"' out/index.html || { echo "::error::canonical link missing"; exit 1; }
+          echo "All output checks passed."
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true   # self-enables Pages where permissions allow
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

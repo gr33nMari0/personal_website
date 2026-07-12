@@ -1,0 +1,368 @@
+{
+  "_readme": "This file is the ONLY place site content lives. Every section of the site reads from here. Edit this file (directly, or via the /edit/ page) and push to main — GitHub Actions rebuilds and deploys automatically. Fields starting with an underscore are comments and are ignored by the site. Set any section's 'visible' flag to false to hide that whole section without deleting your content.",
+  "site": {
+    "_comment": "Global site settings. 'origin' must be the full https URL the site is served from — it is used to build absolute Open Graph / canonical / sitemap URLs, so social previews break if it is wrong. 'repo' powers the Edit page's 'commit on GitHub' link.",
+    "title": "Peter Woodhead — Computing & Cybersecurity",
+    "description": "ANU cybersecurity student, CSSA Cyber Officer and CTF organiser — open to Summer 2026–27 InfoSec internships.",
+    "origin": "https://peterwoodhead.com",
+    "repo": "https://github.com/gr33nMari0/peterwoodhead.com",
+    "locale": "en_AU",
+    "themeColorDark": "#0f1623",
+    "themeColorLight": "#f6f8f9"
+  },
+  "person": {
+    "_comment": "Who the site is about. 'photo' must point at a file in public/ — replace public/images/profile.jpg with a new photo of the same name to update it everywhere, including the social-share image.",
+    "name": "Peter Woodhead",
+    "firstName": "Peter",
+    "lastName": "Woodhead",
+    "pronouns": "He/Him",
+    "headline": "Computing and Cybersecurity Student",
+    "tagline": "I write CTFs, run student security events, and bring a compliance-first mindset to everything from telco provisioning to incident response.",
+    "location": "Canberra, ACT, Australia",
+    "photo": "/images/profile.jpg",
+    "photoAlt": "Peter Woodhead in a navy suit in front of Parliament House, Canberra",
+    "_commentBadges": "Each badge renders as a pill above the name in the hero. Empty array = no badges.",
+    "badges": [
+      "Building the ANU Bush Week Tech Fest",
+      "Open to Summer 2026–27 InfoSec Internships"
+    ],
+    "featuredCta": {
+      "_comment": "Primary hero button, rendered before 'Get in touch'. Empty href = hidden.",
+      "label": "Bush Week Tech Fest",
+      "href": "https://techfest.cssa.club/"
+    }
+  },
+  "contact": {
+    "_comment": "Public contact channels. Deliberately no phone number — this file is published verbatim, so never add private details here. 'allowPublicEmail' acknowledges the email below is intentionally public (silences the validator's privacy warning).",
+    "email": "peter.woodhead@protonmail.com",
+    "allowPublicEmail": true,
+    "form": {
+      "_comment": "Formspree-powered form. 'formspreeId' is the ID from your Formspree dashboard (the part after /f/). The form renders only when it is set; 'endpoint' is the same form as a plain-HTML fallback so submissions still work with JavaScript disabled.",
+      "provider": "formspree",
+      "formspreeId": "mgogwpzj",
+      "endpoint": "https://formspree.io/f/mgogwpzj"
+    }
+  },
+  "resume": {
+    "_comment": "Set 'enabled' to true after dropping your CV at public/resume.pdf (that exact path). While false, no resume buttons render anywhere.",
+    "enabled": false,
+    "path": "/resume.pdf",
+    "label": "Download resume (PDF)"
+  },
+  "socials": {
+    "_comment": "Rendered in the hero, contact section and footer, in this order. 'icon' must be one of: linkedin, github, x, linktree, mail, link. To add another link, copy an item and change the three fields.",
+    "visible": true,
+    "items": [
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/peterwoodhead/",
+        "icon": "linkedin"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/gr33nMari0",
+        "icon": "github"
+      },
+      {
+        "label": "X (Twitter)",
+        "href": "https://x.com/Pete_Woodhead",
+        "icon": "x"
+      },
+      {
+        "label": "Linktree",
+        "href": "https://linktr.ee/peterwoodhead",
+        "icon": "linktree"
+      }
+    ]
+  },
+  "nav": {
+    "_comment": "Top navigation. 'href' is the #id of a section below. Items appear in this order.",
+    "items": [
+      {
+        "label": "About",
+        "href": "#about"
+      },
+      {
+        "label": "Community",
+        "href": "#community"
+      },
+      {
+        "label": "Upskilling",
+        "href": "#upskilling"
+      },
+      {
+        "label": "Skills",
+        "href": "#skills"
+      },
+      {
+        "label": "Work",
+        "href": "#experience"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      },
+      {
+        "label": "Tech Fest",
+        "href": "https://techfest.cssa.club/",
+        "external": true
+      }
+    ]
+  },
+  "about": {
+    "_comment": "'paragraphs' render in order; **double asterisks** highlight a phrase in the accent colour (that is the only markup allowed — no HTML). 'facts' is the 2x2 quick-facts grid.",
+    "visible": true,
+    "eyebrow": "About",
+    "heading": "Who I am",
+    "paragraphs": [
+      "I'm studying Computer Science with a Major in Cybersecurity at the **Australian National University**, driven by an intense curiosity about improving security in both digital and physical spaces. Having grown up on a small farm, the \"shut the gate\" mentality never left me — I close doors behind myself, lock my machine the moment I stand up, and never write a password down.",
+      "Most of my energy goes into Canberra's cyber community. As **Cybersecurity Officer of the ANU CSSA** I design and run CTF competitions — including the 130-player **Disorientation CTF** — and I'm lead organiser of **Bush Week Tech Fest 2026**, a multi-day festival of CTF play and industry tech talks. Retail work at JB Hi-Fi supports my study; building and securing things is where my career is headed.",
+      "I learn deliberately: I ask as many questions as it takes, rephrase to confirm understanding, then lock new knowledge into practice. That, and a firm disinterest in ambiguity, makes **clear stakeholder communication** and **procedural compliance** two of my strongest assets."
+    ],
+    "facts": [
+      {
+        "label": "Location",
+        "value": "Canberra, ACT"
+      },
+      {
+        "label": "University",
+        "value": "ANU"
+      },
+      {
+        "label": "Degree",
+        "value": "Computing · Cybersecurity major"
+      },
+      {
+        "label": "Graduating",
+        "value": "End of 2027"
+      }
+    ]
+  },
+  "skills": {
+    "_comment": "Each group becomes a card; 'items' become chips. Add a group or a chip by copying the pattern.",
+    "visible": true,
+    "eyebrow": "Skills & expertise",
+    "heading": "Technical & leadership",
+    "groups": [
+      {
+        "title": "Network & incident response",
+        "items": [
+          "Incident Management",
+          "Crisis Response",
+          "Network Security",
+          "Threat Analysis",
+          "Forensics"
+        ]
+      },
+      {
+        "title": "Compliance & fraud prevention",
+        "items": [
+          "PCI-DSS",
+          "ID Verification",
+          "Fraud Detection",
+          "Australian Consumer Law",
+          "SOPs & Policy"
+        ]
+      },
+      {
+        "title": "Programming & development",
+        "items": [
+          "Python",
+          "JavaScript",
+          "Java",
+          "Haskell",
+          "Bash",
+          "Web Security"
+        ]
+      },
+      {
+        "title": "Tools & platforms",
+        "items": [
+          "Linux",
+          "Kali Linux",
+          "Docker",
+          "Git",
+          "AWS"
+        ]
+      }
+    ]
+  },
+  "experience": {
+    "_comment": "The day job. 'note' renders under the heading to frame where work sits relative to the security career being built above it.",
+    "visible": true,
+    "eyebrow": "Work",
+    "heading": "The day job",
+    "items": [
+      {
+        "role": "Retail Team Member",
+        "org": "JB Hi-Fi",
+        "orgUrl": "",
+        "period": "Nov 2023 – present · Canberra",
+        "description": "Approaching three years alongside full-time study: customer service across consumer tech and trusted frontline provisioning of Telstra and NBN services. I operate in compliance with Telstra, NBN, PCI-DSS, ACCC and JB Hi-Fi policy — verifying customer identity documents to internal standards and screening for indicators of fraud, SIM-swapping and identity theft at the counter, while communicating contract terms clearly enough for genuinely informed decisions.",
+        "tags": [
+          "Customer Service",
+          "Telco Provisioning",
+          "ID Verification",
+          "Fraud Prevention",
+          "PCI-DSS Compliance"
+        ]
+      }
+    ],
+    "note": "Retail supports my study — the sections above are where the career is being built. It still sharpens real security skills every shift."
+  },
+  "community": {
+    "_comment": "Leadership, volunteering and community roles — the heart of the site. 'featured: true' gives an item the large card treatment with a link button; others render in the compact grid.",
+    "visible": true,
+    "eyebrow": "Volunteering & community",
+    "heading": "What I build and run",
+    "items": [
+      {
+        "featured": true,
+        "role": "Cybersecurity Officer",
+        "org": "ANU Computer Science Students' Association",
+        "period": "Nov 2025 – present",
+        "description": "Instituted ANU's first Orientation Week Capture the Flag and ran it with great success: 130 players from four universities (ANU, UTS, Deakin, UNSW), $5,800 in sponsorship from three cyber companies, and a visit from EmuExploit, Australia's leading CTF team. I design and write the challenges myself — the full 2026 challenge set is open-sourced on GitHub.",
+        "tags": [
+          "Event Leadership",
+          "Sponsorship",
+          "CTF Design",
+          "Community Building"
+        ],
+        "link": {
+          "label": "CTF challenges on GitHub",
+          "href": "https://github.com/anucssa/disorientation-ctf-2026-public"
+        }
+      },
+      {
+        "featured": true,
+        "role": "Lead Organiser",
+        "org": "Bush Week Tech Fest 2026",
+        "period": "31 Jul – 2 Aug 2026",
+        "description": "Leading a multi-day student tech festival for the ANU CSSA — a CTF competition, industry tech talks and sponsor engagement across the Bush Week period. Programme design, venue logistics, sponsorship and the event website.",
+        "tags": [
+          "Event Leadership",
+          "Programme Design",
+          "Industry Outreach"
+        ],
+        "link": {
+          "label": "Tech Fest site",
+          "href": "https://techfest.cssa.club/"
+        }
+      },
+      {
+        "featured": false,
+        "role": "Admin Staff & Tech Team Leader",
+        "org": "National Youth Science Forum",
+        "period": "Apr 2022 – Mar 2023",
+        "description": "Coordinated, researched and deployed platforms (Discord, Whova) to run a smooth digital hybrid program.",
+        "tags": [
+          "Platform Ops",
+          "Hybrid Events"
+        ]
+      },
+      {
+        "featured": false,
+        "role": "Group Staff Leader",
+        "org": "National Youth Science Forum",
+        "period": "Apr 2021 – Mar 2022",
+        "description": "Worked with NYSF corporate and student staff to deliver the Year 12 Program for 600+ students in a hybrid online format.",
+        "tags": [
+          "Leadership",
+          "STEM Outreach"
+        ]
+      }
+    ]
+  },
+  "upskilling": {
+    "_comment": "Conferences, reading and podcasts. 'featured' is the large sponsored-conference card; 'conferences' become chips; 'reading'/'listening' items render as lists with title + author.",
+    "visible": true,
+    "eyebrow": "Conferences & upskilling",
+    "heading": "Staying sharp",
+    "intro": "I keep a finger on the pulse of emerging security threats through conference attendance, security literature and the wider community — and I bring what I learn straight back into practice.",
+    "featured": {
+      "title": "AISA CyberConnect Canberra 2026",
+      "note": "Sponsored by the ANU Information Security Office",
+      "description": "Selected and sponsored by ANU's Information Security Office to represent the university at AISA CyberConnect 2026, with a focus on cyber sovereignty, incident management and crisis leadership.",
+      "tags": [
+        "AISA",
+        "University Representative",
+        "Incident Management"
+      ]
+    },
+    "conferences": {
+      "title": "Regularly attending",
+      "items": [
+        "BSides Canberra",
+        "ISACA Canberra Chapter",
+        "CSides monthly sectalks",
+        "Canberra Cyber Hub"
+      ]
+    },
+    "reading": {
+      "title": "On the bookshelf",
+      "items": [
+        {
+          "title": "Cryptography Engineering",
+          "by": "Ferguson, Schneier & Kohno"
+        },
+        {
+          "title": "Attacking Network Protocols",
+          "by": "James Forshaw · No Starch Press"
+        },
+        {
+          "title": "Security Engineering",
+          "by": "Ross Anderson"
+        },
+        {
+          "title": "Attribution of Advanced Persistent Threats",
+          "by": "Timo Steffens"
+        }
+      ]
+    },
+    "listening": {
+      "title": "In my ears",
+      "items": [
+        {
+          "title": "Darknet Diaries",
+          "by": "Jack Rhysider"
+        }
+      ]
+    }
+  },
+  "education": {
+    "_comment": "Rendered at the end of the Community section as two compact cards.",
+    "visible": true,
+    "items": [
+      {
+        "title": "Bachelor of Computing",
+        "org": "Australian National University",
+        "period": "Graduating end of 2027",
+        "description": "Comprehensive computing degree with a strong emphasis on cybersecurity, incident management and crisis response."
+      },
+      {
+        "title": "Major in Cybersecurity",
+        "org": "Australian National University",
+        "period": "Graduating end of 2027",
+        "description": "Network security, digital forensics, cryptography and incident response."
+      }
+    ]
+  },
+  "contactSection": {
+    "_comment": "Copy for the contact section. Channels are generated from 'contact' and 'socials' above.",
+    "visible": true,
+    "eyebrow": "Contact",
+    "heading": "Let's connect",
+    "blurb": "Always keen to talk cybersecurity, incident response, community events — or Summer 2026–27 InfoSec internship opportunities. Reach out through any channel below.",
+    "linkedinNote": "If you're interested in working with me",
+    "emailNote": "If you'd love to chat further",
+    "qr": {
+      "_comment": "QR code card at the bottom of the contact section. The code itself is generated at build time from site.origin into public/qr.svg.",
+      "visible": true,
+      "caption": "Scan to share this site"
+    }
+  },
+  "footer": {
+    "line": "Peter Woodhead · Canberra, ACT",
+    "privacyNote": "This site sets no cookies and runs no analytics. The only stored value is your light/dark preference, kept in your own browser."
+  }
+}

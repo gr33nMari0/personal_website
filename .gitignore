@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Generated at build time (prebuild scripts recreate these)
+public/og.png
+public/sitemap.xml
+public/robots.txt
+public/site.webmanifest
+public/icon-192.png
+public/icon-512.png
+public/apple-touch-icon.png
+public/qr.svg
+public/data/
+
+# IDE / editor
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env & logs
+.env*
+npm-debug.log*

@@ -1,0 +1,31 @@
+{
+  "name": "peterwoodhead.com",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "validate-content": "node scripts/validate-content.mjs",
+    "generate": "node scripts/generate-assets.mjs",
+    "prebuild": "npm run validate-content && npm run generate",
+    "build": "next build",
+    "preview": "npx serve out",
+    "lint": "next lint"
+  },
+  "private": "true",
+  "dependencies": {
+    "@fontsource/dm-sans": "^5.2.8",
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@fontsource/space-grotesk": "^5.2.10",
+    "@formspree/react": "^3.0.0",
+    "next": "^14.2.35",
+    "qrcode": "^1.5.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "autoprefixer": "^10.5.2",
+    "postcss": "^8.5.17",
+    "satori": "^0.26.0",
+    "tailwindcss": "^3.4.17"
+  }
+}
